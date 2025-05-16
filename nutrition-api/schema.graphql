@@ -1,0 +1,26 @@
+type Nutrition {
+  calories: Float
+  fat: Float
+  protein: Float
+  sugar: Float
+  fiber: Float
+}
+
+type FoodItem {
+  id: ID!
+  name: String!
+  serving_size_g: Int!
+  nutrition: Nutrition!
+}
+
+type Query {
+  """
+  Get all foods in a category (includes carbs in response)
+  """
+  foods(category: String!): [FoodItem!]!
+
+  """
+  Get foods with carbohydrates excluded from nutrition data
+  """
+  lowCarbFoods(category: String!): [FoodItem!]!
+}
