@@ -1,0 +1,82 @@
+/* src/components/AddMealForm.css */
+
+.meal-form-container {
+    padding: 24px;
+    border-radius: 16px;
+    max-width: 400px;
+    margin: 40px auto;
+    background: linear-gradient(to bottom right, #fdfdfd, #f1f5ff);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+    font-family: "Segoe UI", sans-serif;
+    transition: transform 0.3s ease;
+}
+
+.meal-form-container:hover {
+    transform: scale(1.01);
+}
+
+.meal-form-container h2 {
+    margin-bottom: 16px;
+    color: #1f1f1f;
+    font-size: 20px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.meal-input {
+    padding: 8px 12px;
+    font-size: 14px;
+    width: 100%;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: all 0.2s ease-in-out;
+    background-color: #fff;
+}
+
+.meal-input:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 4px rgba(74, 144, 226, 0.4);
+}
+
+.suggestion-list {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 8px;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: #fff;
+    animation: fadeIn 0.2s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.suggestion-item {
+    padding: 10px 14px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.2s;
+}
+
+.suggestion-item:last-child {
+    border-bottom: none;
+}
+
+.suggestion-item:hover {
+    background-color: #eaf2ff;
+    color: #1a73e8;
+}
+
+/* Optional fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

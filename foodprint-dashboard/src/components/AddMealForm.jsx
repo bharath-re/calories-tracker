@@ -1,6 +1,9 @@
+// src/components/AddMealForm.jsx
+
 import React, { useEffect, useState } from "react";
 import { useLazyQuery } from "@apollo/client";
 import { GET_FOODS_BY_CATEGORY } from "../gql/queries";
+import "./AddMealForm.css"; // ✅ Import the CSS
 
 const categories = ["fruits", "vegetables", "indian_foods", "american_foods"];
 
@@ -24,42 +27,36 @@ const AddMealForm = ({ setSelectedFood }) => {
         }
       }
 
-      // ✅ Deduplicate by food name (case-insensitive)
       const deduplicated = Array.from(
-        new Map(
-          foods.map((food) => [food.name.toLowerCase(), food]) // key = name.toLowerCase()
-        ).values()
+        new Map(foods.map((food) => [food.name.toLowerCase(), food])).values()
       );
 
       setAllFoods(deduplicated);
     };
 
     fetchAll();
-    // eslint-disable-next-line
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    const results = allFoods.filter((food) =>
-      food.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setFilteredFoods(results);
+    if (searchTerm.trim() === "") {
+      setFilteredFoods([]);
+    } else {
+      const results = allFoods.filter((food) =>
+        food.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setFilteredFoods(results);
+    }
   }, [searchTerm, allFoods]);
 
   const handleSelect = (food) => {
     setSelectedFood(food);
-    setSearchTerm(food.name); // Optional: fill search input with selected food
+    setSearchTerm("");
+    setFilteredFoods([]);
   };
 
   return (
-    <div
-      style={{
-        padding: "20px",
-        border: "1px solid #ccc",
-        borderRadius: "10px",
-        maxWidth: "400px",
-        margin: "0 auto",
-      }}
-    >
+    <div className="meal-form-container">
       <h2>Add Meal</h2>
 
       <input
@@ -67,37 +64,16 @@ const AddMealForm = ({ setSelectedFood }) => {
         placeholder="Search any food..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        style={{
-          padding: "10px",
-          width: "100%",
-          marginBottom: "10px",
-          borderRadius: "5px",
-          border: "1px solid #ccc",
-        }}
+        className="meal-input"
       />
 
-      {filteredFoods.length > 0 && (
-        <ul
-          style={{
-            listStyle: "none",
-            paddingLeft: 0,
-            maxHeight: "200px",
-            overflowY: "auto",
-            border: "1px solid #eee",
-            borderRadius: "5px",
-            marginTop: "5px",
-            backgroundColor: "#fafafa",
-          }}
-        >
+      {searchTerm && filteredFoods.length > 0 && (
+        <ul className="suggestion-list">
           {filteredFoods.map((food) => (
             <li
               key={food.id}
               onClick={() => handleSelect(food)}
-              style={{
-                padding: "8px",
-                cursor: "pointer",
-                borderBottom: "1px solid #ddd",
-              }}
+              className="suggestion-item"
             >
               {food.name}
             </li>
