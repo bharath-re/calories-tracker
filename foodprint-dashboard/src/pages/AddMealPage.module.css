@@ -1,0 +1,15 @@
+/* src/pages/AddMealPage.module.css */
+.container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.dropdownContainer {
+    margin-bottom: 20px;
+}
+
+.content {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+}
