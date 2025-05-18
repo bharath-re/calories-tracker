@@ -1,0 +1,47 @@
+.daily-card {
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fdfdfd;
+    max-width: 300px;
+    width: 100%;
+    margin: 10px auto;
+}
+
+.daily-title {
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.daily-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 0;
+}
+
+.daily-label {
+    color: #444;
+}
+
+.daily-value {
+    color: #000;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.daily-bar-bg {
+    width: 100%;
+    background-color: #e0e0e0;
+    height: 10px;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+.daily-bar-fill {
+    height: 10px;
+    border-radius: 5px;
+    background-color: #4caf50;
+}
